@@ -1,7 +1,11 @@
 package com.la.repository;
 
+import com.la.common.nonblank.NonBlank;
 import com.la.entitys.Solution;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * @author amen
@@ -11,5 +15,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface ISolutionRepository extends JpaRepository<Solution, Long> {
+
+    @Query(value = "select * from solution where enbable = 1  limit 10", nativeQuery = true)
+    List<Solution> search();
+
 
 }
