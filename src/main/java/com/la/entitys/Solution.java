@@ -1,36 +1,62 @@
 package com.la.entitys;
 
-import lombok.Data;
 
+import lombok.Data;
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
+
 
 /**
  * @author amen
- * @date 2020/3/8 9:19 下午
- * java 与数据库映射对象
  */
-//用来生成get,set,tostring方法
 @Data
-//表示是一个实体，对应数据库中的表
 @Entity
-//用来指定表明,默认转换规则，将大写字母转为小写字母，多个单词用下划线分割
 @Table(name = "solution")
 public class Solution {
-    //表示主键
-    @Id
-    //用来与数据库中的字段做映射
-    @Column(name = "id")
-    //主键生成策略
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
-    @Column(name = "enable")
-    private boolean enable = true;
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+ 
+  @Column(name = "solution_name")
+  private String solutionName;
+ 
+  @Column(name = "content")
+  private String content;
+ 
+  @Column(name = "industry_class_id")
+  private long industryClassId;
+ 
+  @Column(name = "industry_subclass_id")
+  private long industrySubclassId;
+ 
+  @Column(name = "target_client")
+  private String targetClient;
+ 
+  @Column(name = "partner_id")
+  private long partnerId;
+ 
+  @Column(name = "solution_star")
+  private long solutionStar;
+ 
+  @Column(name = "collector")
+  private String collector;
+ 
+  @Column(name = "attach_id")
+  private long attachId;
+ 
+  @Column(name = "example")
+  private String example;
+ 
+  @Column(name = "enabled")
+  private long enabled;
+ 
+  @Column(name = "update_at")
+  private Timestamp updateAt;
+ 
+  @Column(name = "create_at")
+  private Timestamp createAt;
+ 
 
-    @Column(name = "updated_at")
-    private Date updatedAt;
-
-    @Column(name = "created_at")
-    private Date createdAt;
 }

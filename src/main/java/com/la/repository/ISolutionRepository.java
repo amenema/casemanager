@@ -3,8 +3,10 @@ package com.la.repository;
 import com.la.common.nonblank.NonBlank;
 import com.la.entitys.Solution;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -16,8 +18,11 @@ import java.util.List;
 
 public interface ISolutionRepository extends JpaRepository<Solution, Long> {
 
-    @Query(value = "select * from solution where enbable = 1  limit 10", nativeQuery = true)
+    @Query(value = "select * from solution where enabled = 1  limit 10", nativeQuery = true)
     List<Solution> search();
 
+    @Modifying
+    @Query(value = "update solution set enabled = 1 where id = ?1",nativeQuery = true)
+    void deleteById(int id);
 
 }
