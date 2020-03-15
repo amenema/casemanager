@@ -18,10 +18,13 @@ public class Attachment {
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
- 
+
+  @Column(name = "case_id")
+  private long caseId;
+
   @Column(name = "a_name")
   private String aName;
- 
+
   @Column(name = "a_type")
   private String aType;
  
@@ -36,6 +39,6 @@ public class Attachment {
  
   @Column(name = "create_at")
   private Timestamp createAt;
- 
+
 
 }

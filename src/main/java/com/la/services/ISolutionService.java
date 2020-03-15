@@ -1,8 +1,8 @@
 package com.la.services;
 
-import com.la.common.nonblank.NonBlank;
 import com.la.entitys.Solution;
-import org.springframework.stereotype.Service;
+import com.la.model.vo.SolutionInfo;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import java.util.List;
  */
 public interface ISolutionService {
 
-    void save(Solution solution);
-    void updated(Solution solution);
-    void delete(int id);
-    List<Solution> list();
+    SolutionInfo saveOrUpdate(SolutionInfo solutionInfo);
+    void delete(long id);
+    List<Solution> list(SolutionInfo solutionInfo, Pageable pageable);
+    Solution detail(long id);
 
 
 }

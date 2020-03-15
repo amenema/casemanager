@@ -27,7 +27,7 @@ public class Contact {
  
   @Column(name = "contact_phone")
   private String contactPhone;
- 
+
   @Column(name = "partner_id")
   private long partnerId;
  

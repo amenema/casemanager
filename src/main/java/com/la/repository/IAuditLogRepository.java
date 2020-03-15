@@ -1,8 +1,8 @@
 package com.la.repository;
 
-import com.la.entitys.Solution;
-import com.la.model.spec.SolutionSpec;
+import com.la.entitys.AuditLog;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,13 +16,18 @@ import java.util.List;
  * extends 表示继承，这里继承的是JpaRepository<实体类, Long>
  */
 
-public interface ISolutionRepository extends JpaRepository<Solution, Long> {
+public interface IAuditLogRepository extends JpaRepository<AuditLog, Long> {
 
-//    @Query(value = "select * from solution where enabled = 1  limit 10", nativeQuery = true)
-    List<Solution> search(SolutionSpec solutionSpec, Pageable pageable);
+    /**
+     *
+     * @param specification
+     * @param pageable
+     * @return
+     */
+    List<AuditLog> list(Specification<AuditLog> specification, Pageable pageable);
+
 
     @Modifying
-    @Query(value = "update solution set enabled = 1 where id = ?1",nativeQuery = true)
+    @Query(value = "update audit_log set enabled = 1 where id = ?1",nativeQuery = true)
     void deleteById(long id);
-
 }

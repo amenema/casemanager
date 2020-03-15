@@ -30,7 +30,7 @@ public class Users {
  
   @Column(name = "phone")
   private String phone;
- 
+
   @Column(name = "org_id")
   private long orgId;
  

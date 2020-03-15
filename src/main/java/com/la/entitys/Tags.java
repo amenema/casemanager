@@ -21,10 +21,7 @@ public class Tags {
  
   @Column(name = "industry_class")
   private String industryClass;
- 
-  @Column(name = "industry_subclass")
-  private String industrySubclass;
- 
+
   @Column(name = "parent_id")
   private long parentId;
  

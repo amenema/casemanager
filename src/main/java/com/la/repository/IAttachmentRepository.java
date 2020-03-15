@@ -1,7 +1,7 @@
 package com.la.repository;
 
-import com.la.entitys.Solution;
-import com.la.model.spec.SolutionSpec;
+import com.la.entitys.Attachment;
+import com.la.model.spec.AttachmentSpec;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,13 +16,12 @@ import java.util.List;
  * extends 表示继承，这里继承的是JpaRepository<实体类, Long>
  */
 
-public interface ISolutionRepository extends JpaRepository<Solution, Long> {
+public interface IAttachmentRepository extends JpaRepository<Attachment, Long> {
 
-//    @Query(value = "select * from solution where enabled = 1  limit 10", nativeQuery = true)
-    List<Solution> search(SolutionSpec solutionSpec, Pageable pageable);
+//    @Query(value = "select * from attachment where enabled = 1 and case_id = ?1 order id desc ", nativeQuery = true)
+    List<Attachment> list(AttachmentSpec spec, Pageable pageable);
 
     @Modifying
-    @Query(value = "update solution set enabled = 1 where id = ?1",nativeQuery = true)
+    @Query(value = "update attachment set enabled = 1 where id = ?1",nativeQuery = true)
     void deleteById(long id);
-
 }

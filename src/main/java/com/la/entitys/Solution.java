@@ -2,6 +2,8 @@ package com.la.entitys;
 
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnTransformer;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -18,7 +20,7 @@ public class Solution {
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
- 
+
   @Column(name = "solution_name")
   private String solutionName;
  
